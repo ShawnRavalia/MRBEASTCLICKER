@@ -5,6 +5,6 @@ burning mr beast, in order to earn cash, the cash earnt from clicking
 on upgrades that can increase stuff such as cash earned per click (cpc)
 and cash earnedd per second (CPS) etc.
 
-##~UPDATE LOG~
-###VERSION 0.0.1:
+## UPDATE LOG
+### VERSION 0.0.1:
 
