@@ -6,5 +6,4 @@ on upgrades that can increase stuff such as cash earned per click (cpc)
 and cash earnedd per second (CPS) etc.
 
 ## UPDATE LOG
-### VERSION 0.0.1:
-
+### 15/10/2025 VERSION 0.0.1:
