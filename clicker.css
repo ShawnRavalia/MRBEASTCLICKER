@@ -1,0 +1,342 @@
+h1 {
+    text-align: center;
+    font-size: 48px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(90deg, #ff0000 0%, #ff9900 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Fire emoji style */
+.fire {
+    position: absolute;
+    font-size: 2rem;
+    animation: fly 5s linear infinite;
+    pointer-events: none;
+}
+
+/* Animation for flying fire */
+@keyframes fly {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: translateY(-20vh) scale(0.6);
+        opacity: 0.45;
+    }
+}
+
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 300px;
+}
+
+.container img {
+    display: block;
+    margin: auto;
+    width: 750px;
+    cursor: pointer;
+    position: static;
+}
+
+.Money {
+    margin: 0;
+    position: fixed;
+    font-size: 48px;
+}
+
+/* Basic styles */
+#shopBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Side menu styling */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    /* hide it initially off-screen */
+    width: 300px;
+    height: 100%;
+    background: #222;
+    color: white;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Show the side menu by moving it into view */
+.side-menu.open {
+    right: 0;
+}
+
+.side-menu h2 {
+    margin-top: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu li {
+    margin: 15px 0;
+}
+
+#closeBtn {
+    margin-top: 20px;
+    padding: 8px 15px;
+    background: #444;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.pulse {
+    animation: pulseAnim 0.6s ease forwards;
+}
+
+@keyframes pulseAnim {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.settings-menu {
+    position: fixed;
+    top: 0;
+    left: -400px;
+    /* hidden off-screen left */
+    width: 300px;
+    height: 100%;
+    background: #222;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.settings-menu.open {
+    left: 0;
+    /* slide into view */
+}
+
+#settingsBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#closeSettingsBtn {
+    margin-top: 20px;
+    padding: 8px 15px;
+    background: #444;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.settings-menu button {
+    font-size: 24px;
+}
+
+#upgrade3 {
+    display: none;
+}
+
+#upgrade4 {
+    display: none;
+}
+
+.Info {
+    margin-top: 50px;
+    position: fixed;
+    font-size: 32px;
+}
+
+.Info2 {
+    margin-top: 100px;
+    position: fixed;
+    font-size: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
+#loadFileInput {
+    font-size: 24px;
+}
+
+.rebirth-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    padding: 20px;
+    background: #222;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #f39c12;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 1000;
+}
+
+.rebirth-menu.open {
+    display: block;
+}
+
+#rebirthBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Container style */
+.perm-upgrades-menu {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 90%;
+    max-width: 400px;
+    background: #1a1a1a;
+    color: white;
+    border-radius: 12px 12px 0 0;
+    box-shadow: none;
+    transform: translate(-50%, 100%);
+    transition: transform 0.5s ease;
+    padding: 20px;
+    z-index: 1050;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+}
+
+/* Slide menu up */
+.perm-upgrades-menu.open {
+    box-shadow: 0 -5px 15px #007bff;
+    transform: translate(-50%, 0);
+}
+
+/* Person image styling - start hidden and positioned at bottom */
+#personImg {
+    position: absolute;
+    bottom: 100%;
+    /* Just above the menu */
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    width: 120px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    /* so it doesn't block clicks */
+    user-select: none;
+    z-index: 1060;
+}
+
+/* Person visible - animates up and fades in */
+.perm-upgrades-menu.open #personImg {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Upgrade list styled as grid */
+.upgrade-grid {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+/* Each upgrade card */
+.upgrade-card {
+    background: #333;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Buy button style */
+.upgrade-card button {
+    margin-top: 10px;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+/* Close button */
+#closePermUpgradesBtn {
+    margin-top: 20px;
+    background: #e03e3e;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Open button styling */
+#openPermUpgradesBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-weight: bold;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+#permUpgradesBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+
+}

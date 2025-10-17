@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W.I.P</title>
+    <link rel="stylesheet" href="clicker.css">
+</head>
+
+<body>
+    <p class="Money">Cash: <span id="Cash">0</span></p>
+    <p class="Info hidden">CPC: <span id="CPC">1</span></p>
+    <p class="Info2 hidden">CPS: <span id="CPS">0</span></p>
+    <h1>MR BEAST CLICKER</h1>
+    <div class="container">
+        <img src="Mr Beast.jpg" alt="GIFTCARDGIVEAWAY" id="MrBeast" onclick="clickBeast()">
+    </div>
+    <button type="button" id="shopBtn">Go To Shop</button>
+    <div id="sideMenu" class="side-menu">
+        <h2>Shop Upgrades</h2>
+        <ul>
+            <li>Feastables (Dark Chocolate) - +1CPS
+                <button type="button" onclick="BUYUPG1()">COSTS <span id="UPG1">10</span></button>
+            </li>
+            <li>Upload Video - +1VPS<br>
+                <button onclick="VIEWUPG1()">COSTS <span id="VIEWUPG1">100</span></button>
+            </li>
+            <li id="upgrade3">Feastables (Milk Chocolate) - +5CPS
+                <button onclick="BUYUPG2()">COSTS <span id="UPG2">250</span></button>
+            </li>
+            <li id="upgrade4">Buy Subscribers - +5VPS<br>
+                <button onclick="VIEWUPG2()">COST <span id="VIEWUPG2">500</span></button>
+            </li>
+        </ul>
+        <button type="button" id="closeBtn">Close</button>
+    </div>
+    <button id="settingsBtn">Settings</button>
+    <div id="settingsMenu" class="settings-menu">
+        <h2>Settings</h2>
+        <button id="togglePulseBtn">Disable Pulse</button>
+        <button id="toggleStatsBtn">Toggle Stats</button>
+        <button id="saveBtn">Save Game</button>
+        <input type="file" id="loadFileInput" accept=".json" />
+        <button id="loadBtn">Load Game</button>
+        <button id="closeSettingsBtn">Close</button>
+    </div>
+    <button id="rebirthBtn">Rebirth</button>
+
+    <div id="rebirthMenu" class="rebirth-menu">
+        <h2>Rebirth Menu</h2>
+        <p>Playbuttons: <span id="Playbuttons">0</span></p>
+        <p>Rebirth Cost: <span id="RebirthCost">1000</span> Cash</p>
+        <button id="confirmRebirthBtn">Confirm Rebirth</button> 
+        <button id="closeRebirthBtn">Close</button>
+    </div>
+    <button id="permUpgradesBtn">Permanent Upgrades</button>
+
+<!-- Permanent Upgrades menu -->
+<div id="permUpgradesMenu" class="perm-upgrades-menu">
+    <!-- Person image inside the menu container, initially hidden -->
+    <img id="personImg" src="person-cutout.png" alt="Dragging Person" />
+  
+    <h2>Permanent Upgrades</h2>
+    <p>Playbuttons: <span id="permPlaybuttons">0</span></p>
+    <ul class="upgrade-grid">
+      <li class="upgrade-card">
+        <b>Upgrade Click Power +1</b> - Cost: <span id="permUpgrade1Cost">5</span> Playbuttons
+        <button id="buyPermUpgrade1">Buy</button>
+        <span id="permUpgrade1Bought" style="color:lightgreen; display:none;">(Owned)</span>
+      </li>
+      <li class="upgrade-card">
+        <b>Upgrade Passive Income +1</b> - Cost: <span id="permUpgrade2Cost">10</span> Playbuttons
+        <button id="buyPermUpgrade2">Buy</button>
+        <span id="permUpgrade2Bought" style="color:lightgreen; display:none;">(Owned)</span>
+      </li>
+    </ul>
+    <button id="closePermUpgradesBtn">Close</button>
+  </div>
+
+</body>
+<script src="clicker.js"></script>
+
+</html>
