@@ -1,2 +1,10 @@
 # MRBEASTCLICKER
-CLICK ON THE BURNING BEAST TO EARN CASH, USE THAT CASH TO EARN UPGRADES SUCH AS FEASTABLE BARS OR EVEN UPLOAD VIDEOS OR BUY SUBSCRIBERS.
+Mr beast clicker is not only a social statement, but an economical one
+In this REVOLUTIONARY clicker / idle game, you will have to click on a
+burning mr beast, in order to earn cash, the cash earnt from clicking
+on upgrades that can increase stuff such as cash earned per click (cpc)
+and cash earnedd per second (CPS) etc.
+
+##~UPDATE LOG~
+###VERSION 0.0.1:
+
