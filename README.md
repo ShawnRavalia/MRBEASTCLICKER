@@ -12,4 +12,14 @@ Basic functions created:
 - The ability to earn Cash
 - Upgrades Menu:
   - Cash Per Click Upgrades - Feastables (2 Currently, Dark Chocolate & Milk Chocolate)
-  - Cash Per Second Upgrades - Upload Videos & Buy Subscribers 
+  - Cash Per Second Upgrades - Upload Videos & Buy Subscribers
+- Clicking on Mr beast makes it pulse
+- Settings Menu:
+  - Toggling Pulse:
+    - Enabled on default
+    - Persists with save data
+  - Enabling Hidden Stats:
+    - CPC (Cash Per Click)
+    - CPS (Cash Per Second)
+  - Local Saves & Loading
+
