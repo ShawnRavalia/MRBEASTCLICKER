@@ -6,4 +6,10 @@ on upgrades that can increase stuff such as cash earned per click (cpc)
 and cash earnedd per second (CPS) etc.
 
 ## UPDATE LOG
-### 15/10/2025 VERSION 0.0.1:
+### VERSION 0.0.1 - 15/10/2025:
+Development started
+Basic functions created:
+- The ability to earn Cash
+- Upgrades Menu:
+  - Cash Per Click Upgrades - Feastables (2 Currently, Dark Chocolate & Milk Chocolate)
+  - Cash Per Second Upgrades - Upload Videos & Buy Subscribers 
