@@ -22,4 +22,23 @@ Basic functions created:
     - CPC (Cash Per Click)
     - CPS (Cash Per Second)
   - Local Saves & Loading
+### VERSION 0.0.2 - 15/10/2025:
+New Feaures:
+- Fire Emoji's rise up from the bottom and disappear
+- Added Fire Themed graident to the background
+### VERSION 0.1.0 REBIRTH - 16/10/2025:
+New Gameplay Mechanic:
+**REBIRTHING + PLAYBUTTONS**
+New Features:
+Rebirth Button:
+- Upon click it opens menu in the middle of the screen
+- Shows the current rebirth count
+- Shows the needed cash to rebirth
+- Options to rebirth or close menu
+- Rebirthing resets everything but awards 1 playbutton
+Permanent Upgrades Button:
+- Upon click it opens a menu that comes from the bottom of the screen
+- Playbuttons are spent, the upgrades brought here are permanent and consist through rebirths
+- 2 Perm Upgrades - +1 CPC & +1VPS:
+  - Plans to change this into multipliers possibly
 
