@@ -22,10 +22,12 @@ Basic functions created:
     - CPC (Cash Per Click)
     - CPS (Cash Per Second)
   - Local Saves & Loading
+
 ### VERSION 0.0.2 - 15/10/2025:
 New Feaures:
 - Fire Emoji's rise up from the bottom and disappear
 - Added Fire Themed graident to the background
+
 ### VERSION 0.1.0 REBIRTH - 16/10/2025:
 New Gameplay Mechanic:
 **REBIRTHING + PLAYBUTTONS**
@@ -50,9 +52,26 @@ Bug Fixes:
 - Fixed bug where HeroBeast splurged on the screen
 - Fixed bug where HeroBeast made the screen white
 - Had to remove herobeast
+
 ### VERSION 0.1.1 - 27/10/2025:
 New Features:
 **HEROBEAST**
 HEROBEAST CANT DESTROY POLAND ANYMORE!!!!
-- HeroBeast has a 0.001% chance of appearing when clicking the burning beast
+- HeroBeast has a 0.1% chance of appearing when clicking the burning beast
+  - It will appear for a few seconds before disappearing
 - HeroBeast cant splurge no more (neutered)
+
+### VERSION 0.2.0 ACHIEVEMENTS - 27/10/2025 10:17 AM:
+#### WHOLE NEW GAMEPLAY MECHANIC:
+**ACHIEVEMENTS**
+- Achievements Pop Up
+  - The Achievement's Name & Description will be display
+  - Achievement popups from the right
+- 3 Achievements (WITH MORE TO COME)
+  These Include the following
+  - First Steps - Click for the first time 
+  - Clicking 100 Times - Click 100 times
+  - He always comes back - Whats this
+    
+Bug Fixes:
+- Fixed bug where your total CPS & CPS Doesn't carry over through saves
