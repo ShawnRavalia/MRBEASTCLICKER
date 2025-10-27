@@ -43,3 +43,12 @@ Permanent Upgrades Button:
 - 2 Perm Upgrades - +1 CPC & +1VPS:
   - Plans to change this into multipliers possibly
 - Removed HeroBeast
+
+Bug Fixes:
+- Fixed bug where fire emojis made the bottom length infinite
+- Fixed bug when holding space bar just allows for cash to rackup
+- Fixed bug where HeroBeast splurged on the screen
+- Fixed bug where HeroBeast made the screen white
+- Had to remove herobeast
+### VERSION 0.1.1 - 27/10/2025:
+New Features:
