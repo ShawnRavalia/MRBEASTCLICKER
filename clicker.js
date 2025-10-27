@@ -11,8 +11,8 @@ let UPG2_AVALIBLE = false;
 let spacePressed = false;
 let Playbuttons = 0;
 let rebirthcount = 0;
-let rebirthCost = 1; // initial rebirth cost
-let rebirthMultiplier = 2; // cost multiplies by 2 each rebirth
+let rebirthCost = 750; // initial rebirth cost
+let rebirthMultiplier = 1.5; // cost multiplies by 2 each rebirth
 const Cash_Per_Click_Base = 1;  // or your default base value
 const Views_Base = 0;           // or your default base value
 
