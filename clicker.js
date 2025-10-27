@@ -428,7 +428,7 @@ saveBtn.addEventListener('click', () => {
         permUpgrades,
         Playbuttons,
         rebirthCost,
-        achievemnts,
+        achievements,
     };
 
     const dataStr = JSON.stringify(gameState, null, 2);
