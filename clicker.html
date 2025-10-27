@@ -42,7 +42,6 @@
         <button id="toggleStatsBtn">Toggle Stats</button>
         <button id="saveBtn">Save Game</button>
         <input type="file" id="loadFileInput" accept=".json" />
-        <button id="loadBtn">Load Game</button>
         <button id="closeSettingsBtn">Close</button>
     </div>
     <button id="rebirthBtn">Rebirth</button>
@@ -51,33 +50,40 @@
         <h2>Rebirth Menu</h2>
         <p>Playbuttons: <span id="Playbuttons">0</span></p>
         <p>Rebirth Cost: <span id="RebirthCost">1000</span> Cash</p>
-        <button id="confirmRebirthBtn">Confirm Rebirth</button> 
+        <button id="confirmRebirthBtn">Confirm Rebirth</button>
         <button id="closeRebirthBtn">Close</button>
     </div>
     <button id="permUpgradesBtn">Permanent Upgrades</button>
 
-<!-- Permanent Upgrades menu -->
-<div id="permUpgradesMenu" class="perm-upgrades-menu">
-    <!-- Person image inside the menu container, initially hidden -->
-    <img id="personImg" src="person-cutout.png" alt="Dragging Person" />
-  
-    <h2>Permanent Upgrades</h2>
-    <p>Playbuttons: <span id="permPlaybuttons">0</span></p>
-    <ul class="upgrade-grid">
-      <li class="upgrade-card">
-        <b>Upgrade Click Power +1</b> - Cost: <span id="permUpgrade1Cost">5</span> Playbuttons
-        <button id="buyPermUpgrade1">Buy</button>
-        <span id="permUpgrade1Bought" style="color:lightgreen; display:none;">(Owned)</span>
-      </li>
-      <li class="upgrade-card">
-        <b>Upgrade Passive Income +1</b> - Cost: <span id="permUpgrade2Cost">10</span> Playbuttons
-        <button id="buyPermUpgrade2">Buy</button>
-        <span id="permUpgrade2Bought" style="color:lightgreen; display:none;">(Owned)</span>
-      </li>
-    </ul>
-    <button id="closePermUpgradesBtn">Close</button>
-  </div>
+    <!-- Permanent Upgrades menu -->
+    <div id="permUpgradesMenu" class="perm-upgrades-menu">
+        <!-- Person image inside the menu container, initially hidden -->
+        <img id="personImg" src="person-cutout.png" alt="Dragging Person" />
 
+        <h2>Permanent Upgrades</h2>
+        <p>Playbuttons: <span id="permPlaybuttons">0</span></p>
+        <ul class="upgrade-grid">
+            <li class="upgrade-card">
+                <b>Upgrade Click Power +1</b> - Cost: <span id="permUpgrade1Cost">5</span> Playbuttons
+                <button id="buyPermUpgrade1">Buy</button>
+                <span id="permUpgrade1Bought" style="color:lightgreen; display:none;">(Owned)</span>
+            </li>
+            <li class="upgrade-card">
+                <b>Upgrade Passive Income +1</b> - Cost: <span id="permUpgrade2Cost">10</span> Playbuttons
+                <button id="buyPermUpgrade2">Buy</button>
+                <span id="permUpgrade2Bought" style="color:lightgreen; display:none;">(Owned)</span>
+            </li>
+        </ul>
+        <button id="closePermUpgradesBtn">Close</button>
+    </div>
+    <div id="achievementPopup" class="achievement-popup"></div>
+    <button id="achievementsBtn">Achievements</button>
+
+    <div id="achievementsMenu" class="achievements-menu">
+        <h2>🏆 Achievements</h2>
+        <ul id="achievementsList"></ul>
+        <button id="closeAchievementsBtn">Close</button>
+    </div>
 </body>
 <script src="clicker.js"></script>
 

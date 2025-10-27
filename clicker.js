@@ -1,4 +1,10 @@
 let Cash = 0;
+let achievements = [
+    { id: "firstClick", name: "First Steps", desc: "You clicked on the burning beast for the first time", unlocked: false },
+    { id: "clicks100", name: "100 CLICKS", desc: "You clicked the burning beast 100 times", unlocked: false },
+    { id: "hesback", name: "He always comes back", desc: "You can't get rid of him", unlocked: false }
+];
+let clickcounter = 0;
 let Cash_Per_Click = 1;
 let CLICKUPG1_COST = 10;
 let CLICKUPG2_COST = 250;
@@ -13,8 +19,6 @@ let Playbuttons = 0;
 let rebirthcount = 0;
 let rebirthCost = 670; // initial rebirth cost
 let rebirthMultiplier = 1.5; // cost multiplies by 2 each rebirth
-const Cash_Per_Click_Base = 1;  // or your default base value
-const Views_Base = 0;           // or your default base value
 
 const CashDisplay = document.getElementById('Cash');
 const CPC = document.getElementById('CPC');
@@ -37,6 +41,61 @@ const confirmRebirthBtn = document.getElementById('confirmRebirthBtn');
 const closeRebirthBtn = document.getElementById('closeRebirthBtn');
 const playbuttonsDisplay = document.getElementById('Playbuttons');
 const rebirthCostDisplay = document.getElementById('RebirthCost');
+const achievementsBtn = document.getElementById('achievementsBtn');
+const achievementsMenu = document.getElementById('achievementsMenu');
+const closeAchievementsBtn = document.getElementById('closeAchievementsBtn');
+const achievementsList = document.getElementById('achievementsList');
+
+achievementsBtn.addEventListener('click', () => {
+    updateAchievementsMenu();
+    achievementsMenu.classList.add('open');
+});
+
+closeAchievementsBtn.addEventListener('click', () => {
+    achievementsMenu.classList.remove('open');
+});
+
+function updateAchievementsMenu() {
+    achievementsList.innerHTML = '';
+    achievements.forEach(a => {
+        const li = document.createElement('li');
+        li.classList.add('achievement');
+        li.classList.add(a.unlocked ? 'unlocked' : 'locked');
+        li.innerHTML = `
+        <b>${a.name}</b><br>
+        <small>${a.desc}</small>
+        ${a.unlocked ? " ✅" : ""}
+      `;
+        achievementsList.appendChild(li);
+    });
+}
+
+function showAchievementPopup(name) {
+    const popup = document.createElement('div');
+    popup.textContent = `🏆 Achievement Unlocked: ${name}!`;
+    popup.style.position = 'fixed';
+    popup.style.bottom = '20px';
+    popup.style.left = '50%';
+    popup.style.transform = 'translateX(-50%)';
+    popup.style.background = '#333';
+    popup.style.color = 'gold';
+    popup.style.padding = '10px 20px';
+    popup.style.borderRadius = '10px';
+    popup.style.fontSize = '18px';
+    popup.style.boxShadow = '0 0 10px gold';
+    popup.style.zIndex = '9999';
+    document.body.appendChild(popup);
+
+    setTimeout(() => popup.remove(), 4000);
+}
+function unlockAchievement(id) {
+    const achievement = achievements.find(a => a.id === id);
+    if (achievement && !achievement.unlocked) {
+        achievement.unlocked = true;
+        showAchievementPopup(achievement.name);
+        updateAchievementsMenu();
+    }
+}
 
 shopBtn.addEventListener('click', () => {
     sideMenu.classList.add('open');
@@ -57,6 +116,14 @@ function updateDisplay() {
     if (StatsEnabled === true) {
         CPC.textContent = Cash_Per_Click;
         CPS.textContent = Views;
+    }
+}
+function checkAchievements() {
+    if (!achievements.find(a => a.id === "firstClick").unlocked && Cash > 0) {
+        unlockAchievement("firstClick");
+    }
+    if (!achievements.find(a => a.id === "clicks100").unlocked && clickcounter === 100) {
+        unlockAchievement("clicks100");
     }
 }
 let permUpgrades = {
@@ -157,8 +224,21 @@ function clickBeast() {
         void beastImg.offsetWidth;
         beastImg.classList.add('pulse');
     }
+    clickcounter += 1;
     Cash += Cash_Per_Click;
     updateDisplay();
+    checkAchievements();
+
+    //HeroBeast Chance
+    const chance = math.random() * 100;
+    if (chance <= 0.1) {
+        beastImg.src = "HeroBeast.png";
+        unlockAchievement("hesback");
+        //This changes the image back after a few seconds
+        setTimeout(() => {
+            beastImg.src = "Mr Beast.jpg";
+        }, 10000);
+    }
 }
 // Show rebirth menu when clicking rebirth button
 rebirthBtn.addEventListener('click', () => {
@@ -197,6 +277,7 @@ confirmRebirthBtn.addEventListener('click', () => {
 
         updateDisplay();
         updateRebirthDisplay();
+        checkAchievements();
 
         alert('You rebirthed! You earned 1 Playbutton.');
 
@@ -347,6 +428,7 @@ saveBtn.addEventListener('click', () => {
         permUpgrades,
         Playbuttons,
         rebirthCost,
+        achievemnts,
     };
 
     const dataStr = JSON.stringify(gameState, null, 2);
@@ -394,9 +476,12 @@ loadFileInput.addEventListener('change', (event) => {
                 clickPower: { owned: false, cost: 5 },
                 passiveIncome: { owned: false, cost: 10 }
             };
-            Cash_Per_Click = Cash_Per_Click_Base + (permUpgrades.clickPower.owned ? 1 : 0);
-            Views = Views_Base + (permUpgrades.passiveIncome.owned ? 1 : 0);
-            
+            achievements = gameState.achievements ?? achievements;
+            Cash_Per_Click = Cash_Per_Click + (permUpgrades.clickPower.owned ? 1 : 0);
+            Views = Views + (permUpgrades.passiveIncome.owned ? 1 : 0);
+            achievements = gameState.achievements ?? achievements;
+            updateAchievementsMenu();
+
 
             updateDisplay();
             updateRebirthDisplay();

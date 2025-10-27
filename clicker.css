@@ -340,3 +340,73 @@ body {
     cursor: pointer;
 
 }
+
+/* Styling for when achievements pop up */
+.achievement-popup {
+    position: fixed;
+    top: 20px;
+    right: -400px;
+    background: rgba(0, 0, 0, 0.85);
+    color: gold;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 0 15px gold;
+    transition: right 0.6s ease;
+    z-index: 2000;
+}
+
+.achievement-popup.show {
+    right: 20px;
+}
+#achievementsBtn{
+    display:flex;
+    margin-top:30px;
+    font-size:24px;
+}
+/* Achievements menu */
+.achievements-menu {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 300px;
+    height: 100%;
+    background: #222;
+    color: white;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.achievements-menu.open {
+    right: 0;
+}
+
+.achievements-menu h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+#achievementsList {
+    list-style: none;
+    padding: 0;
+}
+
+.achievement {
+    background: #333;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.achievement.unlocked {
+    border-left: 6px solid gold;
+    background: linear-gradient(90deg, #333, #555);
+}
+
+.achievement.locked {
+    opacity: 0.6;
+}
