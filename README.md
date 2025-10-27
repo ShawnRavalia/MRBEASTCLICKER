@@ -31,6 +31,7 @@ New Gameplay Mechanic:
 **REBIRTHING + PLAYBUTTONS**
 New Features:
 Rebirth Button:
+- Rebirth cost starts at 670 and increases by 1.5 each rebirth
 - Upon click it opens menu in the middle of the screen
 - Shows the current rebirth count
 - Shows the needed cash to rebirth
