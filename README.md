@@ -52,3 +52,7 @@ Bug Fixes:
 - Had to remove herobeast
 ### VERSION 0.1.1 - 27/10/2025:
 New Features:
+**HEROBEAST**
+HEROBEAST CANT DESTROY POLAND ANYMORE!!!!
+- HeroBeast has a 0.001% chance of appearing when clicking the burning beast
+- HeroBeast cant splurge no more (neutered)
