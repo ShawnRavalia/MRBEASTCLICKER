@@ -42,4 +42,4 @@ Permanent Upgrades Button:
 - Playbuttons are spent, the upgrades brought here are permanent and consist through rebirths
 - 2 Perm Upgrades - +1 CPC & +1VPS:
   - Plans to change this into multipliers possibly
-
+- Removed HeroBeast
