@@ -2,6 +2,7 @@ let Cash = 0;
 let achievements = [
     { id: "firstClick", name: "First Steps", desc: "You clicked on the burning beast for the first time", unlocked: false },
     { id: "clicks100", name: "100 CLICKS", desc: "You clicked the burning beast 100 times", unlocked: false },
+    { id: "cpc_achieve_1", name: "Feastable Fan", desc: "Have A Total CPC Of 10", unlocked: false },
     { id: "hesback", name: "He always comes back", desc: "You can't get rid of him", unlocked: false }
 ];
 let clickcounter = 0;
@@ -19,7 +20,40 @@ let Playbuttons = 0;
 let rebirthcount = 0;
 let rebirthCost = 670; // initial rebirth cost
 let rebirthMultiplier = 1.5; // cost multiplies by 2 each rebirth
+const messages = [
+    "Subscribe to MrBeast! 🤑",
+    "Feastables are delicious 🍫",
+    "One click at a time...",
+    "You're the next billionaire 💰",
+    "Don't forget to rebirth! 🔁",
+    "You Have Got A Beast Infection",
+    "BEAST INFECTION",
+    "Achievement hunters unite 🏆",
+    "Click faster... MrBeast is watching 👀",
+    "Making it rain cash 💸",
+    "P Diddy is innocent",
+    "That girl should of moved out of R kelly's way",
+    "I'm beasting it",
+    "I'm unleashing my beast",
+    "Footah",
+    "LOOK HYERE",
+    "Appear weak when you are strong, and strong when you are weak.",
+    "I will always do R. Kelly - I'm not perfect, but I'm perfectly me.",
+    "I'm no angel, but I'm no monster, either",
+    "Don't chase the paper, chase the list",
+    "I went to say megatron, but tiktok or my phone decided to glitch",
+    "SUNT💔",
+    "I did it for the kids",
+    "If the glove doesn't fit then you must aquit",
+    "Samuel L Jackson Like a certain type of anime",
+    "'You guys are milking the SUNT Meme Not ME, YOU'",
+    "Khaby lame mechanism",
+    "Blow Me",
+    "Women arrested for abuse & says 6,7"
+];
 
+
+const scrollTextElem = document.getElementById('scrollText');
 const CashDisplay = document.getElementById('Cash');
 const CPC = document.getElementById('CPC');
 const CPS = document.getElementById('CPS');
@@ -45,7 +79,25 @@ const achievementsBtn = document.getElementById('achievementsBtn');
 const achievementsMenu = document.getElementById('achievementsMenu');
 const closeAchievementsBtn = document.getElementById('closeAchievementsBtn');
 const achievementsList = document.getElementById('achievementsList');
+const clickSound = new Audio('Assests/Sounds/click.mp3');
+clickSound.volume = 0.15;
 
+function restartScroll() {
+    // Pick a random message
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    scrollTextElem.textContent = msg;
+  
+    // Remove and re-add the animation class to restart the animation
+    scrollTextElem.classList.remove('scroll-text');
+    void scrollTextElem.offsetWidth; // Trigger reflow
+    scrollTextElem.classList.add('scroll-text');
+  }
+  
+  // Initialize with a random message
+  restartScroll();
+  
+  // Optionally, change the message at intervals
+  setInterval(restartScroll, 10000); // Change every 10 seconds
 achievementsBtn.addEventListener('click', () => {
     updateAchievementsMenu();
     achievementsMenu.classList.add('open');
@@ -124,6 +176,9 @@ function checkAchievements() {
     }
     if (!achievements.find(a => a.id === "clicks100").unlocked && clickcounter === 100) {
         unlockAchievement("clicks100");
+    }
+    if(!achievements.find(a => a.id ==="cpc_achieve_1").unlocked && Cash_Per_Click >= 10){
+        unlockAchievement("cpc_achieve_1");
     }
 }
 let permUpgrades = {
@@ -218,6 +273,7 @@ function updateRebirthDisplay() {
     rebirthCostDisplay.textContent = rebirthCost;
 }
 function clickBeast() {
+    playClickSound();
     const beastImg = document.getElementById('MrBeast');
     if (!PulseDisabled) {
         beastImg.classList.remove('pulse');
@@ -239,6 +295,11 @@ function clickBeast() {
             beastImg.src = "Mr Beast.jpg";
         }, 10000);
     }
+}
+function playClickSound() {
+    const sound = clickSound.cloneNode(); // allows overlapping sounds
+    sound.volume = clickSound.volume;
+    sound.play();
 }
 // Show rebirth menu when clicking rebirth button
 rebirthBtn.addEventListener('click', () => {
