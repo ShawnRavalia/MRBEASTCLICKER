@@ -49,7 +49,9 @@ const messages = [
     "'You guys are milking the SUNT Meme Not ME, YOU'",
     "Khaby lame mechanism",
     "Blow Me",
-    "Women arrested for abuse & says 6,7"
+    "Women arrested for abuse & says 6,7",
+    "LAST ONE TO KEEP THEIR HAND ON THE CAR WINS A FREE FOOTSIE",
+    "'WOAHHHHH' - Emmanuel"
 ];
 
 
@@ -86,18 +88,18 @@ function restartScroll() {
     // Pick a random message
     const msg = messages[Math.floor(Math.random() * messages.length)];
     scrollTextElem.textContent = msg;
-  
+
     // Remove and re-add the animation class to restart the animation
     scrollTextElem.classList.remove('scroll-text');
     void scrollTextElem.offsetWidth; // Trigger reflow
     scrollTextElem.classList.add('scroll-text');
-  }
-  
-  // Initialize with a random message
-  restartScroll();
-  
-  // Optionally, change the message at intervals
-  setInterval(restartScroll, 10000); // Change every 10 seconds
+}
+
+// Initialize with a random message
+restartScroll();
+
+// Optionally, change the message at intervals
+setInterval(restartScroll, 10000); // Change every 10 seconds
 achievementsBtn.addEventListener('click', () => {
     updateAchievementsMenu();
     achievementsMenu.classList.add('open');
@@ -177,7 +179,7 @@ function checkAchievements() {
     if (!achievements.find(a => a.id === "clicks100").unlocked && clickcounter === 100) {
         unlockAchievement("clicks100");
     }
-    if(!achievements.find(a => a.id ==="cpc_achieve_1").unlocked && Cash_Per_Click >= 10){
+    if (!achievements.find(a => a.id === "cpc_achieve_1").unlocked && Cash_Per_Click >= 10) {
         unlockAchievement("cpc_achieve_1");
     }
 }
@@ -450,8 +452,13 @@ document.body.onkeyup = function (e) {
         spacePressed = false;
     }
 };
+function isMobile() {
+    return window.innerWidth < 768; // you can adjust this threshold
+}
 // Generate fire emojis randomly
 function createFire() {
+    if (isMobile()) return;
+
     const fire = document.createElement('div');
     fire.classList.add('fire');
     fire.textContent = '🔥';

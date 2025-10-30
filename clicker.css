@@ -44,8 +44,9 @@ body {
     display: flex;
     width: 70%;
     height: 562.906px;
-    float:right;
+    float: right;
 }
+
 .container img {
     width: 750px;
     cursor: pointer;
@@ -59,19 +60,21 @@ body {
 }
 
 /* Basic styles */
-.ButtonsCont{
-    display:flex;
-    width:25%;
-    height:80%;
+.ButtonsCont {
+    display: flex;
+    width: 25%;
+    height: 80%;
 
 }
-.Buttons{
-    padding-top:20px;
+
+.Buttons {
+    padding-top: 20px;
     font-size: 24px;
 }
-.Buttons button{
-    font-size:24px;
-    width:100%;
+
+.Buttons button {
+    font-size: 24px;
+    width: 100%;
     padding: 10px 20px;
 }
 
@@ -424,5 +427,66 @@ body {
     100% {
         transform: translateX(-100%);
         /* End off-screen to the left */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        height:100%;
+    }
+
+    .Money,
+    .Info,
+    .Info2 {
+        position:static;
+        margin:0;
+        text-align: center;
+    }
+
+    .container {
+        width: 100%;
+        float: none;
+        order: 2;
+    }
+
+    .ButtonsCont {
+        width: 100%;
+        order: 1;
+        justify-content: center;
+    }
+
+    .Buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Buttons button {
+        flex: 1 1 45%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .Buttons button {
+        flex: 1 1 100%;
+        padding: 10px;
+    }
+    .container{
+        height:fit-content;
+    }
+    .container img {
+        width: 100%;
+        height:50%;
+    }
+
+    .scroll-banner {
+        font-size: 1.1rem;
+        line-height:25px;
+        height:25px;
     }
 }
