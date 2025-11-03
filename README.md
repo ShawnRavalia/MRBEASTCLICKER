@@ -81,3 +81,5 @@ Bug Fixes:
 2 New upgrades have been added:
   - Feastables (Kris tyson flavour) - +10CPC
   - Begin construction on the twin beast towers - +15CPS
+### VERSION 0.2.2 BGM UPDATE - 11/03/2025 2:46PM:
+All that has been added is a button in settings that toggles music off/on
