@@ -116,12 +116,12 @@ closeAchievementsBtn.addEventListener('click', () => {
     achievementsMenu.classList.remove('open');
 });
 toggleMusic.addEventListener("click", function() {
+    const audio = document.getElementById("myAudio");
     if(IsOn === 0){
-        const audio = document.getElementById("myAudio");
+        audio.currentTime = 0;
         audio.play();
         IsOn = 1;
     }else{
-        const audio = document.getElementById("myAudio");
         audio.pause();
         IsOn = 0;
     }
