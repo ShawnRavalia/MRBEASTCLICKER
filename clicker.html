@@ -16,6 +16,10 @@
     <p class="Info hidden">CPC: <span id="CPC">1</span></p>
     <p class="Info2 hidden">CPS: <span id="CPS">0</span></p>
     <h1>MR BEAST CLICKER</h1>
+    <audio id="myAudio" loop="true">
+        <source src="Assests/Sounds/Background.mp3" type="audio/mpeg">
+        <p>If you are reading this, it is because your browser does not support the audio element.     </p>
+    </audio>
     <div class="container">
         <img src="Mr Beast.jpg" alt="GIFTCARDGIVEAWAY" id="MrBeast" onclick="clickBeast()">
     </div>
@@ -45,10 +49,10 @@
                 <button onclick="VIEWUPG2()">COST <span id="VIEWUPG2">500</span></button>
             </li>
             <li id="upgrade5">Feastables (Kris tyson Flavour) - +10CPC<br>
-                <button onclick="BUYUPG4()">COST <span id="VIEWUPG2">1000</span></button>
+                <button onclick="BUYUPG3()">COST <span id="UPG3">1000</span></button>
             </li>
             <li id="upgrade6">Begin construction on the twin beast towers - +15VPS<br>
-                <button onclick="VIEWUPG3()">COST <span id="VIEWUPG2">1500</span></button>
+                <button onclick="VIEWUPG3()">COST <span id="VIEWUPG3">1500</span></button>
             </li>
         </ul>
         <button type="button" id="closeBtn">Close</button>
@@ -57,6 +61,7 @@
         <h2>Settings</h2>
         <button id="togglePulseBtn">Disable Pulse</button>
         <button id="toggleStatsBtn">Toggle Stats</button>
+        <button id="toggleMusic">Toggle Music</button>
         <button id="saveBtn">Save Game</button>
         <input type="file" id="loadFileInput" accept=".json" />
         <button id="closeSettingsBtn">Close</button>

@@ -12,6 +12,8 @@ let CLICKUPG2_COST = 250;
 let Views = 0;
 let VIEWSUPG1_COST = 100;
 let VIEWSUPG2_COST = 500;
+let CLICKUPG3_COST = 1000;
+let VIEWSUPG3_COST = 1500;
 let StatsEnabled = false;
 let PulseDisabled = false;
 let UPG2_AVALIBLE = false;
@@ -20,6 +22,7 @@ let Playbuttons = 0;
 let rebirthcount = 0;
 let rebirthCost = 670; // initial rebirth cost
 let rebirthMultiplier = 1.5; // cost multiplies by 2 each rebirth
+let IsOn = 0;
 const messages = [
     "Subscribe to MrBeast! 🤑",
     "Feastables are delicious 🍫",
@@ -28,7 +31,6 @@ const messages = [
     "Don't forget to rebirth! 🔁",
     "You Have Got A Beast Infection",
     "BEAST INFECTION",
-    "Achievement hunters unite 🏆",
     "Click faster... MrBeast is watching 👀",
     "Making it rain cash 💸",
     "P Diddy is innocent",
@@ -51,7 +53,9 @@ const messages = [
     "Blow Me",
     "Women arrested for abuse & says 6,7",
     "LAST ONE TO KEEP THEIR HAND ON THE CAR WINS A FREE FOOTSIE",
-    "'WOAHHHHH' - Emmanuel"
+    "'WOAHHHHH' - Emmanuel",
+    "'That kid was a fine scholar, Hear his mama whine and holler he died for nine dollars' - Masta Ace",
+    "The grammy's are racist, They dont wanna see a black sister winning"
 ];
 
 
@@ -62,7 +66,9 @@ const CPS = document.getElementById('CPS');
 const UPG1COSTDISPLAY = document.getElementById('UPG1');
 const UPG2COSTDISPLAY = document.getElementById('UPG2');
 const VIEWUPG1COSTDISPLAY = document.getElementById('VIEWUPG1');
-const VIEWUPG2COSTDISPLAY = document.getElementById('VIEWUPG2')
+const VIEWUPG2COSTDISPLAY = document.getElementById('VIEWUPG2');
+const UPG3COSTDISPLAY = document.getElementById('UPG3');
+const VIEWUPG3COSTDISPLAY = document.getElementById('VIEWUPG3');
 const shopBtn = document.getElementById('shopBtn');
 const sideMenu = document.getElementById('sideMenu');
 const closeBtn = document.getElementById('closeBtn');
@@ -82,6 +88,7 @@ const achievementsMenu = document.getElementById('achievementsMenu');
 const closeAchievementsBtn = document.getElementById('closeAchievementsBtn');
 const achievementsList = document.getElementById('achievementsList');
 const clickSound = new Audio('Assests/Sounds/click.mp3');
+const toggleMusic = document.getElementById('toggleMusic');
 clickSound.volume = 0.15;
 
 function restartScroll() {
@@ -108,7 +115,19 @@ achievementsBtn.addEventListener('click', () => {
 closeAchievementsBtn.addEventListener('click', () => {
     achievementsMenu.classList.remove('open');
 });
-
+toggleMusic.addEventListener("click", function() {
+    if(IsOn === 0){
+        const audio = document.getElementById("myAudio");
+        audio.play();
+        IsOn = 1;
+    }else{
+        const audio = document.getElementById("myAudio");
+        audio.pause();
+        IsOn = 0;
+    }
+    // Optional: remove the event listener so it only plays once
+    // document.removeEventListener("click", arguments.callee);
+  });
 function updateAchievementsMenu() {
     achievementsList.innerHTML = '';
     achievements.forEach(a => {
@@ -164,6 +183,8 @@ function updateDisplay() {
     VIEWUPG1COSTDISPLAY.textContent = VIEWSUPG1_COST;
     UPG2COSTDISPLAY.textContent = CLICKUPG2_COST;
     VIEWUPG2COSTDISPLAY.textContent = VIEWSUPG2_COST;
+    UPG3COSTDISPLAY.textContent = CLICKUPG3_COST;
+    VIEWUPG3COSTDISPLAY.textContent = VIEWSUPG3_COST;
     if (rebirthcount >= 1) {
         updateRebirthDisplay();
     }
@@ -333,10 +354,14 @@ confirmRebirthBtn.addEventListener('click', () => {
         CLICKUPG2_COST = 250;
         VIEWSUPG1_COST = 100;
         VIEWSUPG2_COST = 500;
+        CLICKUPG3_COST = 1000;
+        VIEWSUPG3_COST = 1500;
 
         // Hide shop upgrades resets (optional)
         document.getElementById('upgrade3').style.display = 'none';
         document.getElementById('upgrade4').style.display = 'none';
+        document.getElementById('upgrade5').style.display = 'none';
+        document.getElementById('upgrade6').style.display = 'none';
 
         updateDisplay();
         updateRebirthDisplay();
@@ -369,6 +394,19 @@ function BUYUPG2() {
         Cash_Per_Click += 5;
         CLICKUPG2_COST *= 1.50;
         CLICKUPG2_COST = Math.round(CLICKUPG2_COST);
+        const upgrade5 = document.getElementById('upgrade5');
+        upgrade5.style.display = 'list-item';  // Or 'block'
+        updateDisplay();
+    } else {
+        alert("YOU STILL BROKE")
+    }
+}
+function BUYUPG3() {
+    if (Cash >= CLICKUPG3_COST) {
+        Cash -= CLICKUPG3_COST;
+        Cash_Per_Click += 10;
+        CLICKUPG3_COST *= 1.75;
+        CLICKUPG3_COST = Math.round(CLICKUPG3_COST);
         updateDisplay();
     } else {
         alert("YOU STILL BROKE")
@@ -395,8 +433,25 @@ function VIEWUPG2() {
     if (Cash >= VIEWSUPG2_COST) {
         Cash -= VIEWSUPG2_COST;
         Views += 5;
-        VIEWSUPG2_COST *= 2.25
+        VIEWSUPG2_COST *= 1.80
         VIEWSUPG2_COST = Math.round(VIEWSUPG2_COST)
+        const upgrade6 = document.getElementById('upgrade6');
+        upgrade6.style.display = 'list-item';
+        setInterval(function () {
+            Cash += Views;
+            updateDisplay();
+        }, 1000);
+        updateDisplay();
+    } else {
+        alert("NO CASH FOOL")
+    }
+}
+function VIEWUPG3() {
+    if (Cash >= VIEWSUPG3_COST) {
+        Cash -= VIEWSUPG3_COST;
+        Views += 15;
+        VIEWSUPG3_COST *= 1.70
+        VIEWSUPG3_COST = Math.round(VIEWSUPG3_COST)
         setInterval(function () {
             Cash += Views;
             updateDisplay();
@@ -488,9 +543,11 @@ saveBtn.addEventListener('click', () => {
         Cash_Per_Click,
         CLICKUPG1_COST,
         CLICKUPG2_COST,
+        CLICKUPG3_COST,
         Views,
         VIEWSUPG1_COST,
         VIEWSUPG2_COST,
+        VIEWSUPG3_COST,
         StatsEnabled,
         PulseDisabled,
         permUpgrades,
@@ -533,9 +590,11 @@ loadFileInput.addEventListener('change', (event) => {
             Cash_Per_Click = gameState.Cash_Per_Click ?? 1;
             CLICKUPG1_COST = gameState.CLICKUPG1_COST ?? 10;
             CLICKUPG2_COST = gameState.CLICKUPG2_COST ?? 250;
+            CLICKUPG3_COST = gameState.CLICKUPG3_COST ?? 1000;
             Views = gameState.Views ?? 0;
             VIEWSUPG1_COST = gameState.VIEWSUPG1_COST ?? 100;
             VIEWSUPG2_COST = gameState.VIEWSUPG2_COST ?? 500;
+            VIEWSUPG3_COST = gameState.VIEWSUPG3_COST ?? 1500;
             StatsEnabled = gameState.StatsEnabled ?? false;
             PulseDisabled = gameState.PulseDisabled ?? false;
             Playbuttons = gameState.Playbuttons ?? 0;

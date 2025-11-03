@@ -59,6 +59,7 @@ body {
     font-size: 48px;
 }
 
+
 /* Basic styles */
 .ButtonsCont {
     display: flex;
@@ -181,6 +182,13 @@ body {
 }
 
 #upgrade4 {
+    display: none;
+}
+#upgrade5 {
+    display: none;
+}
+
+#upgrade6 {
     display: none;
 }
 
