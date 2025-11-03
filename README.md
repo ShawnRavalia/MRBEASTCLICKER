@@ -75,3 +75,11 @@ HEROBEAST CANT DESTROY POLAND ANYMORE!!!!
     
 Bug Fixes:
 - Fixed bug where your total CPS & CPS Doesn't carry over through saves
+
+### VERSION 0.2.1 UPDATE HAUL #2 - 11/03/2025 9:24 AM:
+#### NEW UPGRADES
+2 New upgrades have been added:
+  - Feastables (Kris tyson flavour) - +10CPC
+  - Begin construction on the twin beast towers - +15CPS
+**Background changes**
+  - Gradient has been replaced by a wall of fire background
