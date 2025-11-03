@@ -81,5 +81,3 @@ Bug Fixes:
 2 New upgrades have been added:
   - Feastables (Kris tyson flavour) - +10CPC
   - Begin construction on the twin beast towers - +15CPS
-**Background changes**
-  - Gradient has been replaced by a wall of fire background
