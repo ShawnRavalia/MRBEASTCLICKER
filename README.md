@@ -81,5 +81,26 @@ Bug Fixes:
 2 New upgrades have been added:
   - Feastables (Kris tyson flavour) - +10CPC
   - Begin construction on the twin beast towers - +15CPS
+
 ### VERSION 0.2.2 BGM UPDATE - 11/03/2025 2:46PM:
 All that has been added is a button in settings that toggles music off/on
+
+### VERSION 0.3.0 DIAMOND PLAY BUTTONS + QOL FEATS - 11/04/2025 2:58PM:
+#### WHOLE NEW GAMEPLAY MECHANIC:
+**DIAMOND PLAY BUTTONS**
+- After rebirthing 10 times you will recieve a diamond play button (and will recieve one for each 10 rebirths)
+  - It will multiply the cash per click to be 2x
+  - Diamond play buttons will increase the ammount of cash by 1x for each diamond playbutton earned after earning the first one
+3 New achievements:
+- One for rebirthing
+- One for purchasing view upgrade 3
+- One for getting a diamond play button
+  
+QOL / MISC STUFF:
+- Cash will now be displayed with its unit, stops cash from overflowing the screen (Goes from K all the up to Q for now)
+- Upgrades will now be tracked when unlocked (makes it easier for the whole code to do with unlocking the unlockable upgrades)
+  
+Bug Fixes:
+- Fixed the Math logic for HeroBeast, It now actually works
+
+
