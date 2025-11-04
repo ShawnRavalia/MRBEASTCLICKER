@@ -3,7 +3,10 @@ let achievements = [
     { id: "firstClick", name: "First Steps", desc: "You clicked on the burning beast for the first time", unlocked: false },
     { id: "clicks100", name: "100 CLICKS", desc: "You clicked the burning beast 100 times", unlocked: false },
     { id: "cpc_achieve_1", name: "Feastable Fan", desc: "Have A Total CPC Of 10", unlocked: false },
-    { id: "hesback", name: "He always comes back", desc: "You can't get rid of him", unlocked: false }
+    { id: "hesback", name: "He always comes back", desc: "You can't get rid of him", unlocked: false },
+    { id: "Rebirth", name: "Second Coming of christ", desc: "Rebirthed for the first time", unlocked: false },
+    { id: "TBT", name: "Begun Construction", desc: "Started work on the twin beast towers", unlocked: false },
+    { id: "Diamond Status", name: "Made It Diamond", desc: "You have gotten your first diamond play button", unlocked: false}
 ];
 let clickcounter = 0;
 let Cash_Per_Click = 1;
@@ -14,25 +17,26 @@ let VIEWSUPG1_COST = 100;
 let VIEWSUPG2_COST = 500;
 let CLICKUPG3_COST = 1000;
 let VIEWSUPG3_COST = 1500;
+let VIEWSUPG3_BEGUN = 0;
 let StatsEnabled = false;
 let PulseDisabled = false;
 let UPG2_AVALIBLE = false;
 let spacePressed = false;
+let UPG1_BROUGHT = 0;
+let UPG2_BROUGHT = 0;
+let UPG3_BROUGHT = 0;
+let UPG4_BROUGHT = 0;
+let UPG5_BROUGHT = 0;
+let UPG6_BROUGHT = 0;
 let Playbuttons = 0;
+let DiamondPlayButtons = 0;
+let DiamondPlayButtonsMultipler = 1;
 let rebirthcount = 0;
-let rebirthCost = 670; // initial rebirth cost
-let rebirthMultiplier = 1.5; // cost multiplies by 2 each rebirth
+let rebirthCost = 1000; // initial rebirth cost 1000
+let rebirthMultiplier = 1.5; // cost multiplies by 1.5 each rebirth
 let IsOn = 0;
 const messages = [
-    "Subscribe to MrBeast! 🤑",
-    "Feastables are delicious 🍫",
-    "One click at a time...",
-    "You're the next billionaire 💰",
-    "Don't forget to rebirth! 🔁",
-    "You Have Got A Beast Infection",
-    "BEAST INFECTION",
-    "Click faster... MrBeast is watching 👀",
-    "Making it rain cash 💸",
+    "<b> Feastables are delicious 🍫 (100% NOT PAID PROMOTION)</b>",
     "P Diddy is innocent",
     "That girl should of moved out of R kelly's way",
     "I'm beasting it",
@@ -51,11 +55,16 @@ const messages = [
     "'You guys are milking the SUNT Meme Not ME, YOU'",
     "Khaby lame mechanism",
     "Blow Me",
-    "Women arrested for abuse & says 6,7",
+    "Woman arrested for abuse & says 6,7",
     "LAST ONE TO KEEP THEIR HAND ON THE CAR WINS A FREE FOOTSIE",
     "'WOAHHHHH' - Emmanuel",
     "'That kid was a fine scholar, Hear his mama whine and holler he died for nine dollars' - Masta Ace",
-    "The grammy's are racist, They dont wanna see a black sister winning"
+    "The grammy's are racist, They dont wanna see a black sister winning",
+    "JAY-Z DROPPING SOON",
+    "FAR BACK LIKE SWIZZ BEATZ HAIRLINE",
+    "I did not have relations with that woman",
+    "Prince andrew's email to Epstien"
+
 ];
 
 
@@ -82,6 +91,7 @@ const rebirthMenu = document.getElementById('rebirthMenu');
 const confirmRebirthBtn = document.getElementById('confirmRebirthBtn');
 const closeRebirthBtn = document.getElementById('closeRebirthBtn');
 const playbuttonsDisplay = document.getElementById('Playbuttons');
+const DiamondPlayButtonsDisplay = document.getElementById('DiamondPlayBTNS');
 const rebirthCostDisplay = document.getElementById('RebirthCost');
 const achievementsBtn = document.getElementById('achievementsBtn');
 const achievementsMenu = document.getElementById('achievementsMenu');
@@ -115,19 +125,28 @@ achievementsBtn.addEventListener('click', () => {
 closeAchievementsBtn.addEventListener('click', () => {
     achievementsMenu.classList.remove('open');
 });
-toggleMusic.addEventListener("click", function() {
+toggleMusic.addEventListener("click", function () {
     const audio = document.getElementById("myAudio");
-    if(IsOn === 0){
+    if (IsOn === 0) {
         audio.currentTime = 0;
         audio.play();
         IsOn = 1;
-    }else{
+    } else {
         audio.pause();
         IsOn = 0;
     }
     // Optional: remove the event listener so it only plays once
     // document.removeEventListener("click", arguments.callee);
-  });
+});
+function FormatCash(num) {
+    const UNITS = ['', 'K', 'M', 'B', 'T', 'Q'];
+    let i = 0;
+    while (num >= 1000 && i < UNITS.length - 1) {
+        num /= 1000;
+        i++;
+    }
+    return '$' + num.toFixed(2).replace(/\.0+$|0+$/, '') + UNITS[i];
+}
 function updateAchievementsMenu() {
     achievementsList.innerHTML = '';
     achievements.forEach(a => {
@@ -178,7 +197,7 @@ closeBtn.addEventListener('click', () => {
     sideMenu.classList.remove('open');
 });
 function updateDisplay() {
-    CashDisplay.textContent = Cash;
+    CashDisplay.textContent = FormatCash(Cash);
     UPG1COSTDISPLAY.textContent = CLICKUPG1_COST;
     VIEWUPG1COSTDISPLAY.textContent = VIEWSUPG1_COST;
     UPG2COSTDISPLAY.textContent = CLICKUPG2_COST;
@@ -202,6 +221,15 @@ function checkAchievements() {
     }
     if (!achievements.find(a => a.id === "cpc_achieve_1").unlocked && Cash_Per_Click >= 10) {
         unlockAchievement("cpc_achieve_1");
+    }
+    if (!achievements.find(a => a.id === "Rebirth").unlocked && rebirthcount >= 1) {
+        unlockAchievement("Rebirth");
+    }
+    if (!achievements.find(a => a.id === "TBT").unlocked && VIEWSUPG3_BEGUN === 1) {
+        unlockAchievement("TBT");
+    }
+    if (!achievements.find(a => a.id === "Diamond Status").unlocked && DiamondPlayButtons === 1){
+        unlockAchievement("Diamond Status");
     }
 }
 let permUpgrades = {
@@ -293,6 +321,7 @@ buyPermUpgrade2Btn.addEventListener('click', () => {
 // Update playbuttons and rebirth cost display
 function updateRebirthDisplay() {
     playbuttonsDisplay.textContent = Playbuttons;
+    DiamondPlayButtonsDisplay.textContent = DiamondPlayButtons;
     rebirthCostDisplay.textContent = rebirthCost;
 }
 function clickBeast() {
@@ -304,19 +333,38 @@ function clickBeast() {
         beastImg.classList.add('pulse');
     }
     clickcounter += 1;
-    Cash += Cash_Per_Click;
-    updateDisplay();
-    checkAchievements();
+    if (DiamondPlayButtons === 0) {
+        Cash += Cash_Per_Click;
+        updateDisplay();
+        checkAchievements();
+                //HeroBeast Chance
+                var chance = Math.random() * 100;
+                chance = chance.toFixed(2);
+                console.log(chance);
+                if (chance <= 0.1) {
+                    beastImg.src = "HeroBeast.png";
+                    unlockAchievement("hesback");
+                    //This changes the image back after a few seconds
+                    setTimeout(() => {
+                        beastImg.src = "Mr Beast.jpg";
+                    }, 10000);
+                }
+    } else {
+        Cash += Cash_Per_Click * (DiamondPlayButtonsMultipler);
+        updateDisplay();
+        checkAchievements();
 
-    //HeroBeast Chance
-    const chance = math.random() * 100;
-    if (chance <= 0.1) {
-        beastImg.src = "HeroBeast.png";
-        unlockAchievement("hesback");
-        //This changes the image back after a few seconds
-        setTimeout(() => {
-            beastImg.src = "Mr Beast.jpg";
-        }, 10000);
+        //HeroBeast Chance
+        var chance = Math.random() * 100;
+        chance = chance.toFixed(2);
+        if (chance <= 0.1) {
+            beastImg.src = "HeroBeast.png";
+            unlockAchievement("hesback");
+            //This changes the image back after a few seconds
+            setTimeout(() => {
+                beastImg.src = "Mr Beast.jpg";
+            }, 10000);
+        }
     }
 }
 function playClickSound() {
@@ -356,7 +404,17 @@ confirmRebirthBtn.addEventListener('click', () => {
         VIEWSUPG2_COST = 500;
         CLICKUPG3_COST = 1000;
         VIEWSUPG3_COST = 1500;
-
+        UPG1_BROUGHT = 0;
+        UPG2_BROUGHT = 0;
+        UPG3_BROUGHT = 0;
+        UPG4_BROUGHT = 0;
+        UPG5_BROUGHT = 0;
+        UPG6_BROUGHT = 0;
+        if (rebirthcount % 10 === 0) {
+            DiamondPlayButtons += 1;
+            DiamondPlayButtonsMultipler += 1;
+            alert("YOU HAVE GOT YOUR FIRST DIAMOND PLAY BUTTON");
+        }
         // Hide shop upgrades resets (optional)
         document.getElementById('upgrade3').style.display = 'none';
         document.getElementById('upgrade4').style.display = 'none';
@@ -381,8 +439,12 @@ function BUYUPG1() {
         Cash_Per_Click += 1;
         CLICKUPG1_COST *= 1.75;
         CLICKUPG1_COST = Math.round(CLICKUPG1_COST)
-        const upgrade3 = document.getElementById('upgrade3');
-        upgrade3.style.display = 'list-item';  // Or 'block'
+        if (UPG1_BROUGHT === 0) {
+            UPG1_BROUGHT = 1;
+            const upgrade3 = document.getElementById('upgrade3');
+            upgrade3.style.display = 'list-item';  // Or 'block'
+            updateDisplay()
+        }
         updateDisplay()
     } else {
         alert("YOU AIN'T GOT NO CASH")
@@ -418,8 +480,11 @@ function VIEWUPG1() {
         Views += 1;
         VIEWSUPG1_COST *= 1.80
         VIEWSUPG1_COST = Math.round(VIEWSUPG1_COST);
-        const upgrade4 = document.getElementById('upgrade4');
-        upgrade4.style.display = 'list-item';
+        if (UPG2_BROUGHT === 0) {
+            UPG2_BROUGHT = 1;
+            const upgrade4 = document.getElementById('upgrade4');
+            upgrade4.style.display = 'list-item';
+        }
         setInterval(function () {
             Cash += Views;
             updateDisplay();
@@ -450,8 +515,12 @@ function VIEWUPG3() {
     if (Cash >= VIEWSUPG3_COST) {
         Cash -= VIEWSUPG3_COST;
         Views += 15;
-        VIEWSUPG3_COST *= 1.70
-        VIEWSUPG3_COST = Math.round(VIEWSUPG3_COST)
+        VIEWSUPG3_COST *= 1.70;
+        VIEWSUPG3_COST = Math.round(VIEWSUPG3_COST);
+        if (VIEWSUPG3_BEGUN === 0) {
+            VIEWSUPG3_BEGUN = 1;
+            checkAchievements();
+        }
         setInterval(function () {
             Cash += Views;
             updateDisplay();
@@ -544,6 +613,12 @@ saveBtn.addEventListener('click', () => {
         CLICKUPG1_COST,
         CLICKUPG2_COST,
         CLICKUPG3_COST,
+        UPG1_BROUGHT,
+        UPG2_BROUGHT,
+        UPG3_BROUGHT,
+        UPG4_BROUGHT,
+        UPG5_BROUGHT,
+        UPG6_BROUGHT,
         Views,
         VIEWSUPG1_COST,
         VIEWSUPG2_COST,
@@ -552,6 +627,8 @@ saveBtn.addEventListener('click', () => {
         PulseDisabled,
         permUpgrades,
         Playbuttons,
+        DiamondPlayButtons,
+        DiamondPlayButtonsMultipler,
         rebirthCost,
         achievements,
     };
@@ -598,11 +675,19 @@ loadFileInput.addEventListener('change', (event) => {
             StatsEnabled = gameState.StatsEnabled ?? false;
             PulseDisabled = gameState.PulseDisabled ?? false;
             Playbuttons = gameState.Playbuttons ?? 0;
+            DiamondPlayButtons = gameState.DiamondPlayButtons ?? 0;
+            DiamondPlayButtonsMultipler = gameState.DiamondPlayButtonsMultipler ?? 1;
             rebirthCost = gameState.rebirthCost ?? 1000;
             permUpgrades = gameState.permUpgrades ?? {
                 clickPower: { owned: false, cost: 5 },
                 passiveIncome: { owned: false, cost: 10 }
             };
+            UPG1_BROUGHT = gameState.UPG1_BROUGHT ?? 0;
+            UPG2_BROUGHT = gameState.UPG2_BROUGHT ?? 0;
+            UPG3_BROUGHT = gameState.UPG3_BROUGHT ?? 0;
+            UPG4_BROUGHT = gameState.UPG4_BROUGHT ?? 0;
+            UPG5_BROUGHT = gameState.UPG5_BROUGHT ?? 0;
+            UPG6_BROUGHT = gameState.UPG6_BROUGHT ?? 0;
             achievements = gameState.achievements ?? achievements;
             Cash_Per_Click = Cash_Per_Click + (permUpgrades.clickPower.owned ? 1 : 0);
             Views = Views + (permUpgrades.passiveIncome.owned ? 1 : 0);
@@ -615,13 +700,13 @@ loadFileInput.addEventListener('change', (event) => {
             updatePermUpgradesDisplay();
 
             // Show/hide upgrades based on loaded state
-            if (Cash_Per_Click >= 2) {
+            if (UPG1_BROUGHT === 1) {
                 document.getElementById('upgrade3').style.display = 'list-item';
             } else {
                 document.getElementById('upgrade3').style.display = 'none';
             }
 
-            if (Views >= 1) {
+            if (UPG2_BROUGHT === 1) {
                 document.getElementById('upgrade4').style.display = 'list-item';
             } else {
                 document.getElementById('upgrade4').style.display = 'none';
