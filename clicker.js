@@ -2,11 +2,17 @@ let Cash = 0;
 let achievements = [
     { id: "firstClick", name: "First Steps", desc: "You clicked on the burning beast for the first time", unlocked: false },
     { id: "clicks100", name: "100 CLICKS", desc: "You clicked the burning beast 100 times", unlocked: false },
+    { id: "clicks1000", name: "Advanced Clicker", desc: "You clicked the burning beast 1000 times", unlocked: false },
+    { id: "clicks10000", name: "Beast Clicker", desc: "You clicked the burning beast 10000 times", unlocked: false },
     { id: "cpc_achieve_1", name: "Feastable Fan", desc: "Have A Total CPC Of 10", unlocked: false },
+    { id: "cps_achieve_1", name: "View Botting", desc: "Have A Total CPS Of 10", unlocked: false },
+    { id: "DCL", name: "Dark Chocolate Lover", desc: "Brought 5 Feastables (Dark Chocolate)", unlocked: false },
+    { id: "WKLYUPL", name: "Weekly Uploader", desc: "Uploaded 5 Video's", unlocked: false },
+    { id: "BPB", name: "Bronze Playbutton", desc: "Buy 5K Subscribers", unlocked: false },
+    { id: "TBT", name: "Begun Construction", desc: "Started work on the twin beast towers", unlocked: false },
     { id: "hesback", name: "He always comes back", desc: "You can't get rid of him", unlocked: false },
     { id: "Rebirth", name: "Second Coming of christ", desc: "Rebirthed for the first time", unlocked: false },
-    { id: "TBT", name: "Begun Construction", desc: "Started work on the twin beast towers", unlocked: false },
-    { id: "Diamond Status", name: "Made It Diamond", desc: "You have gotten your first diamond play button", unlocked: false}
+    { id: "Diamond Status", name: "Made It Diamond", desc: "You have gotten your first diamond play button", unlocked: false }
 ];
 let clickcounter = 0;
 let Cash_Per_Click = 1;
@@ -36,7 +42,7 @@ let rebirthCost = 1000; // initial rebirth cost 1000
 let rebirthMultiplier = 1.5; // cost multiplies by 1.5 each rebirth
 let IsOn = 0;
 const messages = [
-    "<b> Feastables are delicious 🍫 (100% NOT PAID PROMOTION)</b>",
+    "Feastables are delicious 🍫 (100% NOT PAID PROMOTION)",
     "P Diddy is innocent",
     "That girl should of moved out of R kelly's way",
     "I'm beasting it",
@@ -204,6 +210,7 @@ function updateDisplay() {
     VIEWUPG2COSTDISPLAY.textContent = VIEWSUPG2_COST;
     UPG3COSTDISPLAY.textContent = CLICKUPG3_COST;
     VIEWUPG3COSTDISPLAY.textContent = VIEWSUPG3_COST;
+    checkAchievements();
     if (rebirthcount >= 1) {
         updateRebirthDisplay();
     }
@@ -219,17 +226,35 @@ function checkAchievements() {
     if (!achievements.find(a => a.id === "clicks100").unlocked && clickcounter === 100) {
         unlockAchievement("clicks100");
     }
+    if (!achievements.find(a => a.id === "clicks1000").unlocked && clickcounter === 1000) {
+        unlockAchievement("clicks1000");
+    }
+    if (!achievements.find(a => a.id === "clicks10000").unlocked && clickcounter === 10000) {
+        unlockAchievement("clicks10000");
+    }
     if (!achievements.find(a => a.id === "cpc_achieve_1").unlocked && Cash_Per_Click >= 10) {
         unlockAchievement("cpc_achieve_1");
     }
-    if (!achievements.find(a => a.id === "Rebirth").unlocked && rebirthcount >= 1) {
+    if (!achievements.find(a => a.id === "Rebirth").unlocked && rebirthcount === 1) {
         unlockAchievement("Rebirth");
     }
     if (!achievements.find(a => a.id === "TBT").unlocked && VIEWSUPG3_BEGUN === 1) {
         unlockAchievement("TBT");
     }
-    if (!achievements.find(a => a.id === "Diamond Status").unlocked && DiamondPlayButtons === 1){
+    if (!achievements.find(a => a.id === "Diamond Status").unlocked && DiamondPlayButtons === 1) {
         unlockAchievement("Diamond Status");
+    }
+    if (!achievements.find(a => a.id === "cps_achieve_1").unlocked && Views >= 10) {
+        unlockAchievement("cps_achieve_1");
+    }
+    if (!achievements.find(a => a.id === "DCL").unlocked && UPG1_BROUGHT >= 5) {
+        unlockAchievement("DCL");
+    }
+    if (!achievements.find(a => a.id === "WKLYUPL").unlocked && UPG2_BROUGHT >= 7) {
+        unlockAchievement("WKLYUPL");
+    }
+    if (!achievements.find(a => a.id === "BPB").unlocked && UPG4_BROUGHT >= 5) {
+        unlockAchievement("BPB");
     }
 }
 let permUpgrades = {
@@ -337,18 +362,18 @@ function clickBeast() {
         Cash += Cash_Per_Click;
         updateDisplay();
         checkAchievements();
-                //HeroBeast Chance
-                var chance = Math.random() * 100;
-                chance = chance.toFixed(2);
-                console.log(chance);
-                if (chance <= 0.1) {
-                    beastImg.src = "HeroBeast.png";
-                    unlockAchievement("hesback");
-                    //This changes the image back after a few seconds
-                    setTimeout(() => {
-                        beastImg.src = "Mr Beast.jpg";
-                    }, 10000);
-                }
+        //HeroBeast Chance
+        var chance = Math.random() * 100;
+        chance = chance.toFixed(2);
+        console.log(chance);
+        if (chance <= 0.1) {
+            beastImg.src = "HeroBeast.png";
+            unlockAchievement("hesback");
+            //This changes the image back after a few seconds
+            setTimeout(() => {
+                beastImg.src = "Mr Beast.jpg";
+            }, 10000);
+        }
     } else {
         Cash += Cash_Per_Click * (DiamondPlayButtonsMultipler);
         updateDisplay();
@@ -440,11 +465,11 @@ function BUYUPG1() {
         CLICKUPG1_COST *= 1.75;
         CLICKUPG1_COST = Math.round(CLICKUPG1_COST)
         if (UPG1_BROUGHT === 0) {
-            UPG1_BROUGHT = 1;
             const upgrade3 = document.getElementById('upgrade3');
             upgrade3.style.display = 'list-item';  // Or 'block'
             updateDisplay()
         }
+        UPG1_BROUGHT += 1;
         updateDisplay()
     } else {
         alert("YOU AIN'T GOT NO CASH")
@@ -456,8 +481,12 @@ function BUYUPG2() {
         Cash_Per_Click += 5;
         CLICKUPG2_COST *= 1.50;
         CLICKUPG2_COST = Math.round(CLICKUPG2_COST);
-        const upgrade5 = document.getElementById('upgrade5');
-        upgrade5.style.display = 'list-item';  // Or 'block'
+        if (UPG3_BROUGHT === 0) {
+            const upgrade5 = document.getElementById('upgrade5');
+            upgrade5.style.display = 'list-item';  // Or 'block'
+            updateDisplay();
+        }
+        UPG3_BROUGHT += 1;
         updateDisplay();
     } else {
         alert("YOU STILL BROKE")
@@ -481,10 +510,10 @@ function VIEWUPG1() {
         VIEWSUPG1_COST *= 1.80
         VIEWSUPG1_COST = Math.round(VIEWSUPG1_COST);
         if (UPG2_BROUGHT === 0) {
-            UPG2_BROUGHT = 1;
             const upgrade4 = document.getElementById('upgrade4');
             upgrade4.style.display = 'list-item';
         }
+        UPG2_BROUGHT += 1;
         setInterval(function () {
             Cash += Views;
             updateDisplay();
@@ -500,8 +529,12 @@ function VIEWUPG2() {
         Views += 5;
         VIEWSUPG2_COST *= 1.80
         VIEWSUPG2_COST = Math.round(VIEWSUPG2_COST)
-        const upgrade6 = document.getElementById('upgrade6');
-        upgrade6.style.display = 'list-item';
+        if (UPG4_BROUGHT === 0) {
+            const upgrade6 = document.getElementById('upgrade6');
+            upgrade6.style.display = 'list-item';
+            updateDisplay();
+        }
+        UPG4_BROUGHT += 1;
         setInterval(function () {
             Cash += Views;
             updateDisplay();

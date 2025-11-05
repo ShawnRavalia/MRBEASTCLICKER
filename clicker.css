@@ -13,7 +13,7 @@ body {
 
 body {
     min-height: 100vh;
-    background: linear-gradient(90deg, #ff0000 0%, #ff9900 100%);
+    background: linear-gradient(180deg, #ff0000 0%, #ff9900 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -54,6 +54,7 @@ body {
 }
 
 .Money {
+    font-weight:bolder;
     margin: 0;
     position: fixed;
     font-size: 48px;
@@ -69,6 +70,7 @@ body {
 }
 
 .Buttons {
+    margin-top:140px;
     padding-top: 20px;
     font-size: 24px;
 }
@@ -193,12 +195,14 @@ body {
 }
 
 .Info {
+    font-weight:bolder;
     margin-top: 50px;
     position: fixed;
     font-size: 32px;
 }
 
 .Info2 {
+    font-weight:bolder;
     margin-top: 100px;
     position: fixed;
     font-size: 32px;
