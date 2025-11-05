@@ -112,6 +112,7 @@ Bug Fixes:
   - Purchase Upgrade 1, 5 times
   - Purchase Upgrade 2, 7 times
   - Purchase Upgrade 4, 5 times
+
 MISC:
 - Made it so it checks for achievements when updating the display (makes it so you can unlock achievements as soon as you get them, not on the next click)
 - Plans to add a bunch of different achievements for purchasing x ammount of upgrade x
