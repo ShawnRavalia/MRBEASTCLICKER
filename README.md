@@ -103,4 +103,16 @@ QOL / MISC STUFF:
 Bug Fixes:
 - Fixed the Math logic for HeroBeast, It now actually works
 
-
+### VERSION 0.3.1 UPDATE HAUL #3 - 11/05/2025 11:37 AM:
+- Gradient Changed to now go from top to bottom
+- **6 NEW ACHIEVEMENTS ADDED**:
+  - Have a total cps of 10
+  - Click 1000 times
+  - Click 10000 times
+  - Purchase Upgrade 1, 5 times
+  - Purchase Upgrade 2, 7 times
+  - Purchase Upgrade 4, 5 times
+MISC:
+  - Made it so it checks for achievements when updating the display (makes it so you can unlock achievements as soon as you get them, not on the next click)
+Plans to add a bunch of different achievements for purchasing x ammount of upgrade x
+Plans to add a scrollable achievements bar, so achievements don't overlap the close button
