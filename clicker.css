@@ -383,7 +383,12 @@ body {
     overflow-y: auto;
     z-index: 1000;
 }
-
+#closeAchievementsBtn{
+    margin-bottom:25px;
+    font-size:33px;
+    border: 0px;
+    border-radius:75px;
+}
 .achievements-menu.open {
     right: 0;
 }

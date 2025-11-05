@@ -1,4 +1,6 @@
 let Cash = 0;
+const date = new Date();
+console.log(date.getDate());
 let achievements = [
     { id: "firstClick", name: "First Steps", desc: "You clicked on the burning beast for the first time", unlocked: false },
     { id: "clicks100", name: "100 CLICKS", desc: "You clicked the burning beast 100 times", unlocked: false },
@@ -7,11 +9,12 @@ let achievements = [
     { id: "cpc_achieve_1", name: "Feastable Fan", desc: "Have A Total CPC Of 10", unlocked: false },
     { id: "cps_achieve_1", name: "View Botting", desc: "Have A Total CPS Of 10", unlocked: false },
     { id: "DCL", name: "Dark Chocolate Lover", desc: "Brought 5 Feastables (Dark Chocolate)", unlocked: false },
-    { id: "WKLYUPL", name: "Weekly Uploader", desc: "Uploaded 5 Video's", unlocked: false },
+    { id: "WKLYUPL", name: "Weekly Uploader", desc: "Uploaded 7 Video's", unlocked: false },
     { id: "BPB", name: "Bronze Playbutton", desc: "Buy 5K Subscribers", unlocked: false },
     { id: "TBT", name: "Begun Construction", desc: "Started work on the twin beast towers", unlocked: false },
     { id: "hesback", name: "He always comes back", desc: "You can't get rid of him", unlocked: false },
     { id: "Rebirth", name: "Second Coming of christ", desc: "Rebirthed for the first time", unlocked: false },
+    { id: "BSTMAS", name: "Merry Beastmas", desc: "Play the game on the 25th (Of any month)", unlocked: false },
     { id: "Diamond Status", name: "Made It Diamond", desc: "You have gotten your first diamond play button", unlocked: false }
 ];
 let clickcounter = 0;
@@ -255,6 +258,9 @@ function checkAchievements() {
     }
     if (!achievements.find(a => a.id === "BPB").unlocked && UPG4_BROUGHT >= 5) {
         unlockAchievement("BPB");
+    }
+    if (!achievements.find(a => a.id === "BSTMAS").unlocked && date.getDate() === 25){
+        unlockAchievement("BSTMAS");
     }
 }
 let permUpgrades = {
